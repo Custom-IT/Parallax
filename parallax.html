@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .block-red{
+            height: 1000px;
+            /* background: red; */
+        }
+        .block-green{
+            height: 1000px;
+            background: black;
+        }
+        .block-parallax{
+            height: 400px;
+            background: url(https://cdn.pixabay.com/photo/2017/10/22/14/53/ballerina-2878011_960_720.jpg) no-repeat;
+            /* filter: blur(4px) sepia(40%); */
+            background-size: 100% auto;
+            /* background-position: 0% 0%; */
+        }
+        table.centered{
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 255, 0.64);
+            background: url(https://demiart.ru/forum/uploads7/post-76267-1300001074.png) no-repeat;
+            background-position: 50% 0%;
+        }
+        table.centered td{
+            vertical-align: middle;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 50px;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="block-red"></div>
+    <div class="block-parallax" id="block-parallax">
+        <table class="centered" id="table-centered">
+            </tr><td>Это эффект параллакса</td></tr>
+        </table>
+    </div>
+    <div class="block-green"></div>
+    <script>
+        // let maxOffset = 1600; // максимальный скролл = 100%; берем константное значение
+        // let blockParallax = document.getElementById("block-parallax");
+        // let maxOffsetT = 3400; // максимальный скролл = 100%; берем константное значение
+        // let blockParallaxT = document.getElementById("table-centered");        
+        // document.addEventListener("scroll", function(){
+        //     let curOffset = window.scrollY;
+        //     let calcPosition = curOffset * 100 / maxOffset;
+        //     blockParallax.style.backgroundPositionY = calcPosition + "%";
+        //     let calcPositionT = curOffset * 100 / maxOffsetT;
+        //     blockParallaxT.style.backgroundPositionY = calcPositionT + "%";
+        // });
+        document.addEventListener("scroll", function () {
+            parallaxEffect(document.getElementById("block-parallax"), 1600);
+            parallaxEffect(document.getElementById("table-centered"), 3000);
+        });
+        function parallaxEffect(element, intency) {
+            let calcPositionY = window.pageYOffset * 100 / intency;
+            element.style.backgroundPositionY = calcPositionY + "%";
+        }
+    </script>
+</body>
+</html>
